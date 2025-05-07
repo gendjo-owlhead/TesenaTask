@@ -37,4 +37,4 @@ npx playwright show-report
 
 ## Notes
 - Tests target: [http://37.27.17.198:8084/cs/](http://37.27.17.198:8084/cs/)
-- Update selectors in tests as needed if the site structure changes. 
+- Update selectors in tests as needed if the site structure changes. # TesenaTask
