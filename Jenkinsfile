@@ -1,4 +1,36 @@
 pipeline {
+  agent any
+
+  // <<– ADD THIS
+  environment {
+    PATH = "/usr/local/bin:${env.PATH}"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Inspect Docker image') {
+      steps {
+        sh 'which docker'   // should now print /usr/local/bin/docker
+        sh 'docker inspect -f . mcr.microsoft.com/playwright:v1.43.1-focal'
+        sh 'docker pull mcr.microsoft.com/playwright:v1.43.1-focal'
+      }
+    }
+
+    // … your other stages …
+  }
+
+  post {
+    always {
+      junit 'path/to/*.xml'
+    }
+  }
+}
+pipeline {
   agent {
     docker {
       image 'mcr.microsoft.com/playwright:v1.43.1-focal'
