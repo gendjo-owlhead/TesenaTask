@@ -9,6 +9,9 @@ pipeline {
       // If Jenkins requires DOCKER_HOST or a custom path, set it in environment
     }
   }
+  environment {
+    DOCKER_HOST = 'unix:///var/run/docker.sock'
+  }
   stages {
     stage('Install dependencies') {
       steps {
