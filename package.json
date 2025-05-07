@@ -1,0 +1,18 @@
+{
+  "name": "tesena-prestashop-e2e",
+  "version": "1.0.0",
+  "description": "E2E tests for PrestaShop demo using Playwright and TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "lint": "eslint . --ext .ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^22.15.14",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}
