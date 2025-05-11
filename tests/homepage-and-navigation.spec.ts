@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('Scenario 1: Verify homepage loading', async ({ page }) => {
-  // 1. Open the URL
-  await page.goto('/');
+  // 1. Open the URL using the absolute path
+  await page.goto('http://37.27.17.198:8084/en/');
 
   // 2. Verify that the page loads without errors and displays the main content
   await expect(page.getByText('Popular Products')).toBeVisible();
@@ -13,8 +13,8 @@ test('Scenario 1: Verify homepage loading', async ({ page }) => {
 });
 
 test('Scenario 2: Verify main navigation functionality', async ({ page }) => {
-  // 1. Open the homepage
-  await page.goto('/');
+  // 1. Open the homepage using the absolute path
+  await page.goto('http://37.27.17.198:8084/en/');
 
   // 2. Click on all main menu links/items and verify each page loads
   const mainMenuLinks = [
@@ -27,6 +27,7 @@ test('Scenario 2: Verify main navigation functionality', async ({ page }) => {
     await page.click(link.selector);
     const errorBanner = await page.locator('text=Error').count();
     expect(errorBanner).toBe(0);
-    await page.goto('/');
+    // Navigate back to the homepage using the absolute path
+    await page.goto('http://37.27.17.198:8084/en/');
   }
-}); 
+});

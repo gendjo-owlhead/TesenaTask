@@ -14,12 +14,17 @@ export default defineConfig({
   use: {
     actionTimeout: 0,
     trace: 'on-first-retry',
-    baseURL: 'http://37.27.17.198:8084/en/',
+    baseURL: 'http://37.27.17.198:8084',
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        // launchOptions: {
+        //   slowMo: 2500,
+        // },
+      },
     },
     {
       name: 'firefox',
@@ -30,4 +35,4 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
   ],
-}); 
+});
