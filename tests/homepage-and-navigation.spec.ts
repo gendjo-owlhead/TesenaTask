@@ -1,8 +1,20 @@
 import { test, expect } from '@playwright/test';
 
+// Base URL configuration
+const BASE_URL = 'http://37.27.17.198:8084/en/';
+
+// Setup common test fixtures
+test.beforeEach(async ({ page }) => {
+  // Navigate to homepage before each test
+  await page.goto(BASE_URL);
+  
+  // Verify page loaded successfully
+  await expect(page).toHaveURL(BASE_URL);
+});
+
 test('Scenario 1: Verify homepage loading', async ({ page }) => {
   // 1. Open the URL using the absolute path
-  await page.goto('http://37.27.17.198:8084/en/');
+  await page.goto(BASE_URL);
 
   // 2. Verify that the page loads without errors and displays the main content
   await expect(page.getByText('Popular Products')).toBeVisible();
@@ -14,7 +26,7 @@ test('Scenario 1: Verify homepage loading', async ({ page }) => {
 
 test('Scenario 2: Verify main navigation functionality', async ({ page }) => {
   // 1. Open the homepage using the absolute path
-  await page.goto('http://37.27.17.198:8084/en/');
+  await page.goto(BASE_URL);
 
   // 2. Click on all main menu links/items and verify each page loads
   const mainMenuLinks = [
@@ -28,6 +40,6 @@ test('Scenario 2: Verify main navigation functionality', async ({ page }) => {
     const errorBanner = await page.locator('text=Error').count();
     expect(errorBanner).toBe(0);
     // Navigate back to the homepage using the absolute path
-    await page.goto('http://37.27.17.198:8084/en/');
+    await page.goto(BASE_URL);
   }
 });

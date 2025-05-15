@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  playwright:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount these directories to preserve test results
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    environment:
+      # Add any environment variables needed
+      - CI=true
