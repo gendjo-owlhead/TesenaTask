@@ -43,3 +43,13 @@ test('Scenario 2: Verify main navigation functionality', async ({ page }) => {
     await page.goto(BASE_URL);
   }
 });
+
+test('Scenario 3: Verify sub-navigation functionality', async ({ page }) => {
+  // 1. Open the homepage using the absolute path
+  await page.goto(BASE_URL);
+
+  // 2. Click on a main menu link (e.g., "Clothes") to access sub-navigation
+  await page.hover('text=Clothes');
+  await expect(page.locator('text=/^Men$/')).toBeVisible({ timeout: 5000 });
+  await page.locator('role=link[name="Men"][exact=true]').click();
+});
