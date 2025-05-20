@@ -1,0 +1,16 @@
+- heading "Subcategories" [level=2]
+- list:
+  - listitem:
+    - link "Stationery":
+      - /url: http://37.27.17.198:8084/en/7-stationery
+      - img "Stationery"
+    - heading "Stationery" [level=5]:
+      - link "Stationery":
+        - /url: http://37.27.17.198:8084/en/7-stationery
+  - listitem:
+    - link "Home Accessories":
+      - /url: http://37.27.17.198:8084/en/8-home-accessories
+      - img "Home Accessories"
+    - heading "Home Accessories" [level=5]:
+      - link "Home Accessories":
+        - /url: http://37.27.17.198:8084/en/8-home-accessories

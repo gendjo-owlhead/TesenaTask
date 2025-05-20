@@ -13,17 +13,20 @@ export default defineConfig({
   reporter: 'html',
   use: {
     actionTimeout: 0,
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     baseURL: 'http://37.27.17.198:8084',
+    video: 'on',
+    screenshot: 'on',
   },
+  outputDir: 'test-results',
   projects: [
     {
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
         launchOptions: {
-        slowMo: 2500,
-         },
+          slowMo: 2500,
+        },
       },
     },
     {
